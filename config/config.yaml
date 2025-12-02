@@ -1,0 +1,58 @@
+model:
+  architecture:
+    num_res_blocks: 10
+    num_channels: 256
+  path: "data/models/chess_model_final.pth"
+  device: "cuda"  # cuda or cpu
+
+mcts:
+  num_simulations: 200
+  c_puct: 1.5
+  temperature: 1.0
+  temperature_threshold: 30
+
+training:
+  num_iterations: 10
+  games_per_iteration: 50
+  num_mcts_sims: 50
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  epochs_per_iteration: 5
+  replay_buffer_size: 50000
+
+game:
+  max_moves: 500
+  time_limit_per_move: 30  # seconds
+  difficulty_levels:
+    easy:
+      num_simulations: 50
+      temperature: 1.5
+    medium:
+      num_simulations: 200
+      temperature: 1.0
+    hard:
+      num_simulations: 800
+      temperature: 0.5
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 1
+  reload: false
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://localhost:8000"
+
+logging:
+  level: "INFO"
+  format: "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan> - <level>{message}</level>"
+  file: "logs/chess_ai.log"
+  rotation: "100 MB"
+  retention: "30 days"
+
+paths:
+  models: "data/models"
+  games: "data/games"
+  checkpoints: "data/models/checkpoints"
+  logs: "logs"

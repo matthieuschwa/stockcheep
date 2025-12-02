@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  StockCheep:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: StockCheep-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config
+    environment:
+      - ENVIRONMENT=production
+      - MODEL_PATH=/app/data/models/chess_model_final.pth
+      - LOG_LEVEL=INFO
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8G
+        reservations:
+          memory: 2G
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  model_data:
+  game_data:
+  logs:

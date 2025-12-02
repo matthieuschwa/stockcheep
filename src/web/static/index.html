@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockCheep</title>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>StockCheep</h1>
+            <p>Play chess against the famous StockFish Cheep Version</p>
+        </header>
+
+        <div class="game-container">
+            <div id="setup-panel" class="panel">
+                <h2>New Game</h2>
+                <div class="form-group">
+                    <label>Play as:</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="color" value="white" checked>
+                            <span>White</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="color" value="black">
+                            <span>Black</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Difficulty:</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="difficulty" value="easy">
+                            <span>Easy (50 simulations)</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="difficulty" value="medium" checked>
+                            <span>Medium (200 simulations)</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="difficulty" value="hard">
+                            <span>Hard (800 simulations)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button id="start-game-btn" class="btn btn-primary">Start Game</button>
+            </div>
+
+            <div id="game-panel" class="panel" style="display: none;">
+                <div class="board-container">
+                    <div id="board" class="chessboard"></div>
+                </div>
+
+                <div class="game-info">
+                    <div class="status-bar">
+                        <div id="game-status" class="status">
+                            <span class="status-label">Status:</span>
+                            <span id="status-text">Your turn</span>
+                        </div>
+                        <div id="turn-indicator" class="turn">
+                            <span class="status-label">Turn:</span>
+                            <span id="turn-text">White</span>
+                        </div>
+                    </div>
+
+                    <div class="move-history">
+                        <h3>Move History</h3>
+                        <div id="move-list" class="move-list"></div>
+                    </div>
+
+                    <div class="game-controls">
+                        <button id="resign-btn" class="btn btn-danger">Resign</button>
+                        <button id="new-game-btn" class="btn btn-secondary">New Game</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading-overlay" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>StockCheep is thinking...</p>
+        </div>
+
+        <div id="game-over-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h2>Game Over</h2>
+                <p id="game-over-message"></p>
+                <button id="modal-new-game-btn" class="btn btn-primary">New Game</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

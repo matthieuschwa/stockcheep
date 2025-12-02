@@ -36,7 +36,6 @@ env/
 .ipynb_checkpoints
 
 # Data and Models
-data/models/*.pth
 data/models/checkpoints/*.pth
 !data/models/.gitkeep
 !data/games/.gitkeep

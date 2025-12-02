@@ -1,6 +1,6 @@
 # stockcheep, cheap edition of stockfish
 
-
+![stockcheepI](stockfish.png)
 
 Fast reminder for non chess player, stockfish is an RL model that combines a deep neural network with Monte Carlo Tree Search (MCTS) to play chess at different skill levels. My Stockcheep is built with PyTorch and FastAPI.
 
@@ -132,3 +132,4 @@ Model saved to: data/models/chess_model_final.pth
 - The chess and AI communities for inspiration
 
 *Happy Chess Playing!* 🎮
+
